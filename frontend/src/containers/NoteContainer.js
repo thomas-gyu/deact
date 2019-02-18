@@ -20,7 +20,7 @@ export class NoteContainer extends Component {
 
 
   render() {
-    const { noteInput } = this.props;
+    const { noteInput, error } = this.props;
     const { handleChange, addNote } = this;
 
     return (
@@ -30,6 +30,7 @@ export class NoteContainer extends Component {
             noteInput={noteInput}
             onChangeInput={handleChange}
             onAdd={addNote}
+            error={error}
           />
         </NoteWrapper>
       </div>
@@ -39,7 +40,8 @@ export class NoteContainer extends Component {
 
 const mapStateToProps = state => ({
   noteInput: state.notes.noteInput,
-  notes: state.notes.notes
+  notes: state.notes.notes,
+  error: state.notes.error
 });
 
 const mapDispatchToProps = dispatch => {
