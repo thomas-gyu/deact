@@ -2,11 +2,8 @@ import React from "react";
 import './LoginForm.scss';
 import { Link } from "react-router-dom";
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faTimes);
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const AuthForm = ({
   kind,
@@ -24,25 +21,16 @@ const AuthForm = ({
 
   const handleKeyPress = e => {
     if (e.key === "Enter") {
-      switch (kind) {
-        case "register":
-          onRegister();
-          return;
-        case "login":
-          onLogin();
-          return;
-        default:
-          return;
-      }
+      onLogin();
     }
   };
 
 
   return (
-    <div classNale={'body'}>
+    <div className={'body'}>
       <div className={'login-box'}>
         <div className={'hide-login-btn'}><FontAwesomeIcon icon="times" /></div>
-        <div className={'login-form'}>  
+        <div className={'login-form'}>
           <h1>Welcome</h1>
           <input
             type="text"
@@ -62,7 +50,7 @@ const AuthForm = ({
             onChange={handleChange}
             onKeyPress={handleKeyPress}
           />
-          <div className={"login-btn"} onClick={onRegister}>
+          <div className={"login-btn"} onClick={onLogin}>
             Login
           </div>
         </div>

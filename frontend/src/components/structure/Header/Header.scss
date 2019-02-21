@@ -1,15 +1,10 @@
 @import "styles/utils.scss";
 
 .header {
-  background: $oc-violet-6;
-  height: 5rem;
-
-  display: flex;
-  align-items: center;
+  flex-grow: 1;
 
   .logo {
     color: white;
-
     font-weight: 800;
     font-size: 1.5rem;
 
@@ -30,4 +25,8 @@
 
     cursor: pointer;
   }
+}
+
+.grow {
+  flex-grow: 1;
 }
