@@ -3,7 +3,7 @@ import "./NoteList.scss";
 import NoteItem from "components/notes/NoteItem/NoteItem";
 
 
-const NoteList = ({ notes, editing, onToggle, onChange }) => {
+const NoteList = ({ notes, editing, onToggle, onChange, onUpdate, onDelete  }) => {
   const noteList = notes.map((note, i) => {
     return (
       <NoteItem
@@ -12,6 +12,8 @@ const NoteList = ({ notes, editing, onToggle, onChange }) => {
         editing={editing}
         onToggle={onToggle}
         onChange={onChange}
+        onUpdate={onUpdate}
+        onDelete={onDelete}
       />
     );
   });

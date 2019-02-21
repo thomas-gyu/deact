@@ -38,12 +38,22 @@ export class NoteContainer extends Component {
       // 아니면 에디팅 표시
       toggleNote({ id, text });
     }
-  }
+  };
+
+  updateNote = () => {
+    const { updateNote } = this.props;
+    updateNote();
+  };
+
+  deleteNote = ({ id }) => {
+    const { deleteNote } = this.props;
+    deleteNote({ id });
+  };
 
 
   render() {
     const { noteInput, error, notes, editing } = this.props;
-    const { handleChange, addNote, handleToggle } = this;
+    const { handleChange, addNote, handleToggle, updateNote, deleteNote  } = this;
 
     return (
       <div>
@@ -59,6 +69,8 @@ export class NoteContainer extends Component {
             editing={editing}
             onToggle={handleToggle}
             onChange={handleChange}
+            onUpdate={updateNote}
+            onDelete={deleteNote}
           />
         </NoteWrapper>
       </div>
@@ -86,6 +98,12 @@ const mapDispatchToProps = dispatch => {
     },
     toggleNote: ({ id, text }) => {
       dispatch(noteActions.toggleNote({ id, text }));
+    },
+    updateNote: () => {
+      dispatch(noteActions.updateNote());
+    },
+    deleteNote: ({ id }) => {
+      dispatch(noteActions.deleteNote({ id }));
     }
   };
 };

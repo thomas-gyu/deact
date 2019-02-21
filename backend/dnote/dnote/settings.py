@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'notes',
     'rest_framework',
+    'knox',
+    'debug_toolbar'
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+# 제일 하단에 추가해줍니다.
+# 처음에 10개만 받아오기 위해 PAGE_SIZE를 설정했습니다.
+# 그리고 기본 권한을 knox의 token을 기반으로 설정했습니다.
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+}
